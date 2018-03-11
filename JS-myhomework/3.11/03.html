@@ -1,0 +1,7 @@
+var a ={y:123};
+function foo(x){
+    x,y = 345;
+    x = {y:456};
+}
+foo(a);
+console.log(a.y);//345
