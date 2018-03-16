@@ -1,0 +1,9 @@
+console.log(Number(undefined));//NaN
+console.log(Number(null));//0
+console.log(Number(true));//1
+console.log(Number(false));//0
+console.log(Number(""));//0
+console.log(Number("abc"));//NaN
+console.log(Number("123.345xx"));//NaN
+console.log(Number("32343,345xx"));//NaN
+console.log(Number({x:1,y:2}));//NaN
