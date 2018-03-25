@@ -1,0 +1,44 @@
+//函数定义 函数声明方式
+function max(a,b){
+    return a>b?a:b;
+}
+max(2,3);//3
+
+//函数定义 函数表达式方式 (等号右侧可以是匿名函数也可以是非匿名函数)
+var max = function (a,b){
+    return a>b?a:b;
+};
+max(2,3);//3
+
+//函数定义 Function构造函数方式
+var max = new Function("a","b","return a>b?a:b");
+max(2,3);//3
+
+
+//实参数大于形参数
+function test() {
+    console.log(arguments);//Arguments(2) ["hello,", "world!", callee: ƒ, Symbol(Symbol.iterator): ƒ]
+    console.log(test.arguments==arguments,arguments);false Arguments(2) ["hello,", "world!", callee: ƒ, Symbol(Symbol.iterator): ƒ]
+    console.log(arguments.length);//2
+	console.log(typeof arguments);//object
+	console.log(arguments instanceof Array);//false
+	console.log(arguments instanceof Object);//true
+    console.log(Array.prototype.slice.call(arguments));["hello,", "world!"]
+    var s = "";
+    for (var i = 0; i < arguments.length; i++) {
+        s += arguments[i];
+    }
+    return s;
+}
+//"hello,world!"
+
+//实参数小于形参数
+var sum = function(a,b,c){
+    b = b||4;
+    c = c||5;
+    return a+b+c;
+};
+console.log(sum(1,2,3));//6
+console.log(sum(1,2));//8
+console.log(sum(1));//10
+
