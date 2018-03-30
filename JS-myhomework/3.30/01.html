@@ -1,0 +1,61 @@
+//part 1
+//(1)
+console.log(a);//undefined
+var a = 1;
+console.log(a);//1
+
+//(2)
+var a;
+console.log(a);//1
+a = 1;
+console.log(a);//1
+
+console.log(a,b);1 undefined
+var b = 23;
+console.log(a,b);1 23
+var a = b;
+console.log(a,b);23 23
+
+
+console.log(obj1,obj2);//undefined undefined
+var obj1 = {x:23};
+console.log(obj1,obj2);//{x: 23} undefined
+var obj2 = obj1;
+console.log(obj1,obj2);//{x: 23} {x: 23}
+obj2.x =25;
+console.log(obj1,obj2);//{x: 25} {x: 25}
+
+
+//part 2
+(1)
+foo();//
+function foo(){
+    console.log("f_1");
+}
+function foo(){
+    console.log("f_2");
+}//f_2
+
+(2)
+function foo(){
+    console.log("f_1");
+}
+function foo(){
+    console.log("f_2");
+}
+foo();//f_2
+
+
+//part 3 
+foo();
+var foo = function(){
+    console.log("foo");
+};//在part2的基础下为 f_2 否则无法定义
+
+
+console.log(foo);//输出什么：undefind
+var foo = function(){
+    console.log("foo");
+};
+foo();//是否会报错：否 输出foo
+
