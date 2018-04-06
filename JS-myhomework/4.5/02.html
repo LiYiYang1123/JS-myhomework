@@ -1,0 +1,28 @@
+//ES5中无块作用域
+{
+    var a = 4;
+}
+console.log(a);//4
+
+
+//变量污染、变量共享问题,尤其是异步执行的情况下。
+var userId = 123;
+document.onclick = function () {
+    console.log("userId = ",userId);
+    //alert("userId = "+userId);
+};
+
+PS:
+var a=2,b=3;
+if(a<b){
+    var userId = 234;
+}//污染变量现象消失
+
+
+(另附)
+//使用IIFE来解决上述问题
+var userId = 123;
+document.onclick = function () {
+    console.log("userId = ",userId);
+    //alert("userId = "+userId);
+};
