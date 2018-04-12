@@ -1,0 +1,42 @@
+//立即执行表达式 常见形式
+(function max( x,y){
+    console.log("the max is",x>y?x:y);
+}(2,3));//the max is 3
+
+(function (x,y){
+    console.log("the min is",x<y?x:y);
+})(2,3);//the min is 2
+
+IIFE是表达式，要注意使用分号结尾，否则可能出现错误
+(function() {
+    console.log("111");
+})()
+(function () {
+    console.log("222");
+})()//报错
+
+(function() {
+    console.log("111");
+})();
+(function () {
+    console.log("222");
+})()//111
+      222
+
+
+var i = function(){
+    return 10;
+}(); //i为10
+
+
+true && function(a,b){
+    return a>b?a:b;
+}(5,9);//9
+
+
+(1)!function(x,y){
+    return x==y?true:false; // === 返回什么
+}("5",5);//false
+(2)!function(x,y){
+    return x===y?true:false;
+}("5",5);true
