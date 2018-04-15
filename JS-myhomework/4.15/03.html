@@ -1,0 +1,50 @@
+function Person(){
+    var name = "default";
+    return {
+        getName : function(){
+            return name;
+        },
+        setName : function(newName){
+            name = newName;
+        }
+    }
+};
+var john = Person();
+console.log(john.getName());//default
+john.setName("john");
+console.log(john.getName());//john
+
+var jack = Person();
+console.log(jack.getName());//default
+jack.setName("jack");
+console.log(jack.getName());//jack
+
+(1)
+var m = 10;
+function f1(){
+    nAdd=function(){++m;};
+    function f2(){
+        console.log(m);
+    }
+    return f2;
+}
+var result1=f1();
+var result2=f1();
+document.onclick = result1; 
+nAdd();
+result2(); //11
+(2)
+var m = 10;
+function f1(){
+    nAdd=function(){++m;};
+    function f2(){
+        console.log(m);
+    }
+    return f2;
+}
+var result1=f1();
+var result2=f1();
+result1(); //10
+nAdd();
+result2(); //11
+result1();//11
