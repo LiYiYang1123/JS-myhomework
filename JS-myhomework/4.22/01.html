@@ -1,0 +1,71 @@
+var o4 = {};
+o4.a = "aaa";
+Object.defineProperty(o4,"b",
+    {configurable:true,enumerable:false,writable:true,value:"bbb"}
+);
+var o5 = Object.create(o4);
+o5.c = 234;
+Object.defineProperty(o5,"d",{enumerable:false,value:567});
+for(var k in o5){
+    if(o5.hasOwnProperty(k)){
+        console.log("o5 自有可遍历属性：",k,o5[k]);//o5 自有可遍历属性： c 234
+    }else {
+        console.log("o5 非自有可遍历属性：",k,o5[k]);//o5 非自有可遍历属性： a aaa
+    }
+}
+console.log(o5.propertyIsEnumerable("a"),
+    o5.propertyIsEnumerable("b"),
+    o5.propertyIsEnumerable("c"),
+    o5.propertyIsEnumerable("d")
+);//false false true false
+console.log("a" in o5,"b" in o5,"c" in o5,"d" in o5);//true true true true
+console.log(Object.keys(o5));//["c"]
+console.log(Object.getOwnPropertyNames(o5));//(2) ["c", "d"]
+
+
+
+//属性特性的继承特点
+（1）
+var o1 = {};
+Object.defineProperty(o1,"x",{
+    value:12,
+    //writable:true
+});
+o1.x = 34;
+console.log(o1.x);//12
+
+var o2 = Object.create(o1);
+o2.x = 56;//是在o2上添加了新属性x，还是修改了o1的x属性，还是前两者都不是？//修改了o1的属性
+console.log(o2.x);//12
+（2）
+//属性特性的继承特点
+var o1 = {};
+Object.defineProperty(o1,"x",{
+    value:12,
+    writable:true
+});
+o1.x = 34;
+console.log(o1.x);//34
+
+var o2 = Object.create(o1);
+o2.x = 56;
+console.log(o2.x);//56
+//访问器属性特性的继承特点
+var o3 = {_x:21};
+Object.defineProperty(o3,"x",{
+    get:function(){return this._x}
+});
+o3.x = 34;
+console.log(o3.x);//21
+
+var o4 = Object.create(o3);
+Object.defineProperty(o4,"x",{
+    set:function (val) {
+        this._x = val;
+    },
+    get:function () {
+        return ++this._x;
+    }
+});
+o4.x = 56;
+console.log(o4.x);//57

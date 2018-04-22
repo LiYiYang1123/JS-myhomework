@@ -1,0 +1,51 @@
+（1）扩展
+
+var empty1 = {a:1};
+console.log(Object.isExtensible(empty1));//true
+
+empty2 = Object.create({},{
+    "a":{
+        value : 1,
+        configurable : false,
+        enumerable : true,
+        writable : true
+    }
+});
+console.log(Object.isExtensible(empty2));
+//true  true
+
+
+var empty = {};
+    console.log(Object.isExtensible(empty));//true
+    empty.a = 1;
+//不可扩展对象
+Object.preventExtensions(empty);
+console.log(Object.isExtensible(empty));//false
+
+（2）密封
+(function () {
+    var obj = {        
+        kobe:function(){},
+        foo:"1"
+    };
+    obj.foo = "2";
+    obj.lumpy = "3";
+    delete obj.kobe;
+
+    var o = Object.seal(obj);
+    console.log(o === obj);
+    console.log(Object.isSealed(obj));
+//true true
+
+(3)冻结
+(function () {
+    var obj = {
+        kobe:function(){},
+        foo:"1"
+    };
+    obj.foo = "2";
+    obj.lumpy = "3";
+    delete obj.kobe;
+    Object.freeze(obj);
+    console.log(Object.isFrozen(obj));
+//true
